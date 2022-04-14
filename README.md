@@ -1,7 +1,7 @@
 # Stanford NLP Core
 
 This Dockerfile downloads, configure, and runs the 
-[Stanford CoreNLP server](http://stanfordnlp.github.io/CoreNLP/corenlp-server.html) as a Docker Image. This build is intended to be used on a personal or small reasearch team projects.
+[Stanford CoreNLP server](http://stanfordnlp.github.io/CoreNLP/corenlp-server.html) as a Docker Image. This build is intended to be used on a personal or small research team projects.
 
 Currently the builded version is 4.1.0.
 
@@ -9,13 +9,17 @@ Currently the builded version is 4.1.0.
 
 For more imformation on the configuration and funcionality of the [Stanford OpenNLP Server](https://stanfordnlp.github.io/CoreNLP/corenlp-server.html) use the official documentation.
 
-### Deploy using docker CLI
-
-To download and run a [prebuilt version of the CoreNLP server](https://hub.docker.com/r/nlpbox/corenlp/)
-from Docker Hub locally at ``http://localhost:9000``, just type:
+To build the image locally clone the repository: 
 
 ```
-docker build -t stanford_corenlp:4.1.0 .
+git clone https://github.com/d1egoprog/stanford-corenlp-docker.git
+```
+### Deploy using docker CLI
+
+Use the `docker` command cli tool and run:
+
+```
+docker build -t stanford-corenlp:4.1.0 stanford-corenlp/.
 docker run -p 9000:9000 stanford_corenlp:4.1.0
 ```
 
@@ -44,6 +48,21 @@ If is prefered a docker compose file also is also availabe with the standard bui
 docker-compose up -d
 ```
 
+Or use the compose file pulling the Docker Hub image, storing the following into a new `docker-compose.yml` file.
+
+```
+version: '3.7'
+
+services:
+  stanford_corenlp:
+    image: d1egoprog/stanford-corenlp:4.1.0
+    ports:
+      - "9000:9000"
+    restart: always
+```
+
+Check the the prebuilt version of the [image](https://hub.docker.com/r/d1egoprog/stanford-corenlp) from Docker Hub.
+
 ## Testing the Installation
 
 To check the funcionallity, you can open a web browser window to your docker engine `IP` and the choosen service eg. `PORT=9000` , normally on [localhost:9000](http://localhost:9000). 
@@ -58,5 +77,5 @@ curl --data 'The quick brown fox jumped over the lazy dog.' 'http://localhost:90
 
 ### Consuming by Library
 
-To use the official phython library [`stanza`](https://stanfordnlp.github.io/stanza/) a small example has been prepared in a jupyter notebook, [stanza-example](stanza-example.ipynb)
+To use the official phython library [`stanza`](https://stanfordnlp.github.io/stanza/) a small example has been prepared in a jupyter notebook, [stanza-example](https://github.com/d1egoprog/stanford-corenlp-docker/blob/main/stanza-example.ipynb)
 
