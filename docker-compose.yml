@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  stanford_corenlp:
+    build: stanford-corenlp/.
+    ports:
+      - "9000:9000"
+    restart: always
+    environment: 
+      - JAVA_XMX=8G
+      - ANNOTATORS=tokenize,ssplit,parse
+      - TIMEOUT_MILLISECONDS=60000
+      - THREADS=6
+      - MAX_CHAR_LENGTH=100000
