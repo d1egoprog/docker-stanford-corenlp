@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  stanford_corenlp:
+    build: d1egoprog/stanford-corenlp:4.1.0
+    ports:
+      - "9000:9000"
+    restart: always
