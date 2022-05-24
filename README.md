@@ -2,7 +2,7 @@
 
 This repository is dedicated to expose and track a customized Docker Image of the traditional [Stanford CoreNLP server](http://stanfordnlp.github.io/CoreNLP/corenlp-server.html). This build intends to be used on personal or small research teams projects.
 
-A ready-to-use [image](https://hub.docker.com/r/d1egoprog/stanford-corenlp) from Docker Hub is provided, along with the [deploy instructions](#deploy-alternatives) and the possibility of downloading and customizing the image through the Dockerfile using simple [build instructions](#build-alternatives). The assembled version is 4.1.0; however, it is possible to modify the `VERSION` variable via the  Dockerfile.
+A ready-to-use [image](https://hub.docker.com/r/d1egoprog/stanford-corenlp) from Docker Hub is provided, along with the [deploy instructions](#deploy-alternatives) and the possibility of downloading and customizing the image through the Dockerfile using simple [build instructions](#build-alternatives). The assembled version is 4.1.0; however, it is possible to modify the `VERSION` variable via the Dockerfile.
 
 Also, deployment testing is provided using plain `HTTP` via the `curl` command and the official python library [`stanza`](https://stanfordnlp.github.io/stanza/).
 
@@ -105,4 +105,5 @@ services:
 
 ## Contact
 
-If you have any question in deployment or build or any error is found, please contact us by opening an issue. And contributing is always welcome.
+If you have any questions in deployment or build and any error is found, please contact me by opening an issue. And contributing is always welcome. The [Github repository url](https://github.com/d1egoprog/stanford-corenlp-docker)
+
