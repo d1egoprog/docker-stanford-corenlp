@@ -105,5 +105,5 @@ services:
 
 ## Contact
 
-If you have any questions in deployment or build and any error is found, please contact me by opening an issue. And contributing is always welcome. The [Github repository url](https://github.com/d1egoprog/stanford-corenlp-docker)
+If you have any questions in deployment or build and any error is found, please contact me by opening an issue. And contributing is always welcome. The [Github repository url](https://github.com/d1egoprog/stanford-corenlp-docker).
 
