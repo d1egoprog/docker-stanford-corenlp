@@ -15,7 +15,7 @@ To deploy the prebuilt docker image, two options are provided: use the `docker-c
 Download the prepared 'deploy.yml' file from the repository via `wget` and execute the command using the utility.
 
 ```
-wget https://raw.githubusercontent.com/d1egoprog/stanford-corenlp-docker/main/deploy.yml
+wget https://raw.githubusercontent.com/d1egoprog/docker-stanford-corenlp/main/deploy.yml
 docker-compose -f deploy.yml up -d
 ```
 
@@ -41,7 +41,7 @@ curl --data 'The quick brown fox jumped over the lazy dog.' 'http://localhost:90
 
 ### Consuming by Library
 
-To use the official python library [`stanza`](https://stanfordnlp.github.io/stanza/) a small example has been prepared in a jupyter notebook, [stanza-example](https://github.com/d1egoprog/stanford-corenlp-docker/blob/main/stanza-example.ipynb)
+To use the official python library [`stanza`](https://stanfordnlp.github.io/stanza/) a small example has been prepared in a jupyter notebook, [stanza-example](https://github.com/d1egoprog/docker-stanford-corenlp/blob/main/stanza-example.ipynb)
 
 ## Build Alternatives
 
@@ -105,5 +105,5 @@ services:
 
 ## Contact
 
-If you have any questions in deployment or build and any error is found, please contact me by opening an issue. And contributing is always welcome. The [Github repository url](https://github.com/d1egoprog/stanford-corenlp-docker).
+If you have any questions in deployment or build and any error is found, please contact me by opening an issue. And contributing is always welcome. The [Github repository URL](https://github.com/d1egoprog/docker-stanford-corenlp/).
 
