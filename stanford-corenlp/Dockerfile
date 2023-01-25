@@ -1,5 +1,6 @@
 FROM alpine:3.8 as builder
-MAINTAINER Diego Rincon-Yanez <diego-rincon@outlook.com>
+LABEL maintainer="<diego-rincon@outlook.com>"
+LABEL version="4.5.2"
 
 ENV JAVA_XMX 8G
 ENV ANNOTATORS tokenize,ssplit,parse
@@ -7,12 +8,11 @@ ENV TIMEOUT_MILLISECONDS 60000
 ENV THREADS 5
 ENV MAX_CHAR_LENGTH 100000
 ENV PORT 9000
-ENV VERSION 4.1.0
+ENV VERSION 4.5.2
 
 RUN apk update && \
     apk add git wget openjdk8-jre-base py2-pip py2-curl
 
-# install latest CoreNLP release
 WORKDIR /opt
 
 RUN wget https://nlp.stanford.edu/software/stanford-corenlp-${VERSION}.zip 
