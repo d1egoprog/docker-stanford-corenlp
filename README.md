@@ -1,8 +1,8 @@
 # Stanford CoreNLP Server - Dockerized Alternative
 
-This repository is dedicated to exposing and tracking a customized Docker Image of the traditional [Stanford CoreNLP server](http://stanfordnlp.github.io/CoreNLP/corenlp-server.html). This build intends to be used as a dedicated service to provide for personal or small research teams.
+This repository is dedicated to exposing and tracking a customized Docker Image of the traditional [Stanford CoreNLP server](http://stanfordnlp.github.io/CoreNLP/corenlp-server.html). This build intends to be used as a dedicated service for personal or small research teams.
 
-A ready-to-use [image](https://hub.docker.com/r/d1egoprog/stanford-corenlp) from Docker Hub is provided, along with the [deploy instructions](#deploy-alternatives) and the possibility of downloading and customizing the image through the Dockerfile using simple [build instructions](#build-alternatives). The current supported version is 4.5.2; however, it is possible to modify the `VERSION` variable via the Dockerfile.
+A ready-to-use [image](https://hub.docker.com/r/d1egoprog/stanford-corenlp) from Docker Hub is provided, with the [deploy instructions](#deploy-alternatives) and the possibility of downloading and customizing the image through the Dockerfile using simple [build instructions](#build-alternatives). The current supported version is 4.5.7; however, it is possible to modify the `VERSION` variable via the Dockerfile.
 
 Also, deployment testing is provided using plain `HTTP` via the `curl` command using the official python library [`stanza`](https://stanfordnlp.github.io/stanza/).
 
@@ -10,14 +10,14 @@ Also, deployment testing is provided using plain `HTTP` via the `curl` command u
 
 ## Deploy Alternatives
 
-To deploy the prebuilt docker image, two options are provided: use the `docker-compose` tool and the `docker` command from the CLI utility.
+To deploy the prebuilt docker image, two options are provided: use the `docker` command or the `docker compose` tool from the CLI utility.
 
 ### Deploy using Docker CLI
 
-Directly run the 'docker' command like the following example. e.g., changing two variables. For more information, check the [Official Documentation](http://stanfordnlp.github.io/CoreNLP/corenlp-server.html)
+Directly run the `docker` command like the following example. e.g., changing two variables. For more information, check the [Official Documentation](http://stanfordnlp.github.io/CoreNLP/corenlp-server.html)
 
-``` Docker
-docker run -e JAVA_XMX=12g -e ANNOTATORS=tokenize,ssplit,parse -p 9000:9000 d1egoprog/stanford-corenlp:4.5.2
+``` Dockerfile
+docker run -e JAVA_XMX=12g -e ANNOTATORS=tokenize,ssplit,parse -p 9000:9000 d1egoprog/stanford-corenlp
 ```
 
 ### Deploy using docker-compose
@@ -25,8 +25,8 @@ docker run -e JAVA_XMX=12g -e ANNOTATORS=tokenize,ssplit,parse -p 9000:9000 d1eg
 Download the prepared 'docker-compose.yaml' file from the repository via `wget` and execute the command using the utility.
 
 ``` BASH
-wget https://raw.githubusercontent.com/d1egoprog/docker-stanford-corenlp/main/docker-compose.yaml
-docker-compose up -d
+wget https://raw.githubusercontent.com/d1egoprog/docker-stanford-corenlp/main/compose.yaml
+docker compose up -d
 ```
 Happy hacking!! 🖖🖖.
 
@@ -44,7 +44,7 @@ curl --data 'The quick brown fox jumped over the lazy dog.' 'http://localhost:90
 
 ### Consuming by Library
 
-To use the official python library [`stanza`](https://stanfordnlp.github.io/stanza/) a small example has been prepared in a jupyter notebook, [stanza-example](https://github.com/d1egoprog/docker-stanford-corenlp/blob/main/test/stanza-example.ipynb)
+To use the official python library [`stanza`](https://stanfordnlp.github.io/stanza/) a small example has been prepared in a jupyter notebook, [stanza-example](test/stanza-example.ipynb)
 
 ## Build Alternatives
 
@@ -60,14 +60,14 @@ git clone https://github.com/d1egoprog/stanford-corenlp-docker.git
 
 Use the `docker` command CLI tool to build and run:
 
-``` Docker
-docker build -t stanford-corenlp:4.5.2 stanford-corenlp/.
-docker run -p 9000:9000 stanford-corenlp:4.5.2
+``` Dockerfile
+docker build -t stanford-corenlp:4.5.7 stanford-corenlp/.
+docker run -p 9000:9000 stanford-corenlp:4.5.7
 ```
 
 All the JVM parameters can be accessed by editing the Dockerfile and rebuilding the image by default; the parameters configured are:
 
-``` Docker
+``` Dockerfile
 ENV JAVA_XMX 8G
 ENV ANNOTATORS all
 ENV TIMEOUT_MILLISECONDS 60000
@@ -79,25 +79,23 @@ ENV PORT 9000
 If you do not want to edit the Dockerfile, environment variables can be overwritten from the `docker run` command, e.g., changing the JVM memory parameter `JAVA_XMX` to reserve more memory. 
 
 ``` Docker
-docker run -e JAVA_XMX=12g -p 9000:9000 stanford-corenlp:4.5.2
+docker run -e JAVA_XMX=12g -p 9000:9000 stanford-corenlp:4.5.6
 ```
 
-### Build using docker-compose
+### Build using compose
 
-If preferred, a docker-compose file is also available with the standard build from the docker file and an override configuration (same parameters from Dockerfile); this should be changed to set your desired annotators specific computing requirements. To run the service, run the command:
+If preferred, a docker compose file is also available with the standard build from the docker file and an override configuration (same parameters from Dockerfile); this should be changed to set your desired annotators specific computing requirements. To run the service, run the command:
 
 ``` Docker
-docker-compose -f build.yaml up -d
+docker compose -f build.yaml up -d
 ```
 
 Or use the compose file to build the Docker image, storing the following into a new `build.yaml` file. Also is possible to override the variables, e.g., changing the JVM memory parameter `JAVA_XMX` to reserve more memory or changing `ANNOTATORS` task performed by the server. 
 
 ``` YAML
-version: '3.7'
-
 services:
   stanford_corenlp:
-    image: d1egoprog/stanford-corenlp:4.5.2
+    image: d1egoprog/stanford-corenlp:4.5.6
     ports:
       - "9000:9000"
     environment: 
