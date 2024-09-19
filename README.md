@@ -62,7 +62,7 @@ Use the `docker` command CLI tool to build and run:
 
 ``` Dockerfile
 docker build -t stanford-corenlp:4.5.7 stanford-corenlp/.
-docker run -p 9000:9000 stanford-corenlp:4.5.7
+docker run -p 9000:9000 stanford-corenlp
 ```
 
 All the JVM parameters can be accessed by editing the Dockerfile and rebuilding the image by default; the parameters configured are:
@@ -95,7 +95,7 @@ Or use the compose file to build the Docker image, storing the following into a 
 ``` YAML
 services:
   stanford_corenlp:
-    image: d1egoprog/stanford-corenlp:4.5.6
+    image: d1egoprog/stanford-corenlp
     ports:
       - "9000:9000"
     environment: 

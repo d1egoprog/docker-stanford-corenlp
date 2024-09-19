@@ -1,6 +1,6 @@
 services:
   stanford_corenlp:
-    build: d1egoprog/stanford-corenlp:4.5.7
+    build: d1egoprog/stanford-corenlp
     ports:
       - "9000:9000"
     environment: 
